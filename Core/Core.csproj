@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+        <StartupObject>Core.MainWithIOC</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Boilerplate\Boilerplate.csproj" />
+      <ProjectReference Include="..\Containers\Containers.csproj" />
+    </ItemGroup>
+
+</Project>

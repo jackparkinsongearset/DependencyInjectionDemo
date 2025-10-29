@@ -7,9 +7,9 @@ public static class MainWithoutIOC
 {
     public static void Main(string[] args)
     {
-        var salesDatabase = new SalesDatabase();
-        var productDatabase = new ProductDatabase();
-        var mainApp = new SalesProcessor(salesDatabase, productDatabase);
+        //var salesDatabase = new SalesDatabase();
+        //var productDatabase = new ProductDatabase();
+        var mainApp = new SalesProcessor();
 
         var exampleCustomer = new Customer(Guid.NewGuid(), FirstName: "Foo", LastName: "Bar", Email: "foo.bar@email.com");
         var exampleProduct = new Product(Guid.NewGuid(), ProductName: "Example Product", Features: [], RetailPrice: 19.99m);

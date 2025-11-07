@@ -59,7 +59,7 @@ public class TestContainer : Container
         if (ResolvePrimitivesAndStructs(type, out var concreteInstance)) return concreteInstance;
 
         // Handle classes and records - note only handles one constructor classes/records at present
-        var ctor = type.GetConstructors().Single();
+        var ctor = type.GetConstructors().First();
         var parameters = ctor.GetParameters().Select(p => Resolve(p.ParameterType)).ToArray();
         return Activator.CreateInstance(type, parameters)!;
     }

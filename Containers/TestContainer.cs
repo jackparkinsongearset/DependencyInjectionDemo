@@ -48,20 +48,12 @@ public class TestContainer : Container
             var resolvedCollection = ResolveCollection(type, _random.Next(2, 6));
             if (resolvedCollection != null) return resolvedCollection;
         }
-        
-        // Handle interfaces and abstract classes using base implementation
-        if (type.IsInterface || type.IsAbstract)
-        {
-            return base.Resolve(type);
-        }
 
         // Handle primitive types and common structs with one-line returns
         if (ResolvePrimitivesAndStructs(type, out var concreteInstance)) return concreteInstance;
 
-        // Handle classes and records - note only handles one constructor classes/records at present
-        var ctor = type.GetConstructors().First();
-        var parameters = ctor.GetParameters().Select(p => Resolve(p.ParameterType)).ToArray();
-        return Activator.CreateInstance(type, parameters)!;
+        // Handle interfaces / abstract classes / records / concrete classes using base method
+        return base.Resolve(type);
     }
 
     private bool ResolvePrimitivesAndStructs(Type type, [MaybeNullWhen(false)] out object instance)
